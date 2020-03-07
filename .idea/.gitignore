@@ -1,6 +1,6 @@
 # Default ignored files
- /workspace.xml
- /checkstyle-idea.xml
- /compiler.xml
- /misc.xml
- /vcs.xml
+ /.idea/workspace.xml
+/.idea/checkstyle-idea.xml
+ /.idea/compiler.xml
+ /.idea/misc.xml
+ /.idea/vcs.xml
