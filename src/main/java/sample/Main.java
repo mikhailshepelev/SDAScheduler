@@ -1,10 +1,16 @@
 package sample;
 
+import entities.Lesson;
+import entities.Student;
+import entities.Trainer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import util.HibernateUtil;
 
 public class Main extends Application {
 
@@ -18,8 +24,18 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        launch(args);
-        System.out.println("sdfsdfvcfdfsdfsdsdfdscvvd");
-        System.out.println("dfdfdfdf");
+        //launch(args);
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+
+        Lesson lesson = session.get(Lesson.class, 1);
+        System.out.println(lesson.getLessonTime().time);
+
+        Trainer trainer = session.get(Trainer.class, 3);
+        System.out.println(trainer.toString());
+
+        Student student = session.get(Student.class, 2);
+        System.out.println(student.toString());
     }
 }

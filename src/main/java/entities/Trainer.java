@@ -1,33 +1,27 @@
 package entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Trainer {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int trainerID;
     private String name;
     private boolean isMale;
-    private int age;
     private String email;
     private String phoneNumber;
-    private List<String> skills;
 
     @OneToMany(mappedBy = "trainer")
     private List<Topic> topicsList = new ArrayList<>();
 
-    public Trainer(int trainerID, String name, boolean isMale, int age, String email, String phoneNumber, List<String> skills) {
-        this.trainerID = trainerID;
+    public Trainer(String name, boolean isMale, String email, String phoneNumber) {
         this.name = name;
         this.isMale = isMale;
-        this.age = age;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.skills = skills;
     }
 
     public Trainer() {
@@ -57,14 +51,6 @@ public class Trainer {
         isMale = male;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -81,24 +67,22 @@ public class Trainer {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<String> getSkills() {
-        return skills;
+    public List<Topic> getTopicsList() {
+        return topicsList;
     }
 
-    public void setSkills(List<String> skills) {
-        this.skills = skills;
+    public void setTopicsList(List<Topic> topicsList) {
+        this.topicsList = topicsList;
     }
 
     @Override
     public String toString() {
         return "Trainer{" +
-                "tID=" + trainerID +
+                "trainerID=" + trainerID +
                 ", name='" + name + '\'' +
                 ", isMale=" + isMale +
-                ", age=" + age +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", skills=" + skills +
                 '}';
     }
 }

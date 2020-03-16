@@ -1,27 +1,31 @@
 package entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Student {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int sID;
+
     private String name;
     private boolean isMale;
-    private int age;
     private String phoneNumber;
     private String email;
 
     @ManyToOne
     private Course course;
 
-    public Student(int sID, String name, boolean isMale, int age, String phoneNumber, String email, Course course) {
-        this.sID = sID;
+    public Student(String name, boolean isMale, String phoneNumber, String email) {
         this.name = name;
         this.isMale = isMale;
-        this.age = age;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+    }
+
+    public Student(String name, boolean isMale, String phoneNumber, String email, Course course) {
+        this.name = name;
+        this.isMale = isMale;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.course = course;
@@ -54,14 +58,6 @@ public class Student {
         isMale = male;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -92,10 +88,9 @@ public class Student {
                 "sID=" + sID +
                 ", name='" + name + '\'' +
                 ", isMale=" + isMale +
-                ", age=" + age +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
-                ", course=" + course +
+                ", course=" + course.getName() +
                 '}';
     }
 }
