@@ -7,6 +7,7 @@ import java.util.List;
 @Entity
 public class Topic {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int topicID;
     private String name;
 
@@ -19,12 +20,10 @@ public class Topic {
     @OneToMany(mappedBy = "topic")
     private List<Lesson> lessonsList = new ArrayList<>();
 
-    public Topic(int topicID, String name, Course course, Trainer trainer, List<Lesson> lessonsList) {
-        this.topicID = topicID;
+    public Topic(String name, Course course, Trainer trainer) {
         this.name = name;
         this.course = course;
         this.trainer = trainer;
-        this.lessonsList = lessonsList;
     }
 
     public Topic() {
@@ -75,9 +74,8 @@ public class Topic {
         return "Topic{" +
                 "topicID=" + topicID +
                 ", name='" + name + '\'' +
-                ", course=" + course +
-                ", trainer=" + trainer +
-                ", lessonsList=" + lessonsList +
+                ", course=" + course.getName() +
+                ", trainer=" + trainer.getName() +
                 '}';
     }
 }
