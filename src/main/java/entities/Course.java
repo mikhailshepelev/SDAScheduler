@@ -1,14 +1,13 @@
 package entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Course {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int courseID;
     private String name;
     private String city;
@@ -19,12 +18,9 @@ public class Course {
     @OneToMany(mappedBy = "course")
     private List<Topic> topicsList = new ArrayList<>();
 
-    public Course(int courseID, String name, String city, List<Student> studentsList, List<Topic> topicsList) {
-        this.courseID = courseID;
+    public Course(String name, String city) {
         this.name = name;
         this.city = city;
-        this.studentsList = studentsList;
-        this.topicsList = topicsList;
     }
 
     public Course() {
@@ -76,8 +72,6 @@ public class Course {
                 "courseID=" + courseID +
                 ", name='" + name + '\'' +
                 ", city='" + city + '\'' +
-                ", studentsList=" + studentsList +
-                ", topicsList=" + topicsList +
                 '}';
     }
 }

@@ -1,27 +1,32 @@
 package entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import java.sql.Date;
-import java.sql.Time;
+import enums.LessonTime;
+import enums.VenuePlace;
+
+import javax.persistence.*;
 
 @Entity
 public class Lesson {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int lessonID;
-    private Date lessonDate;
-    private Time timeStart;
-    private Time timeEnd;
+
+    private String lessonDate;
+
+    @Enumerated(EnumType.STRING)
+    private LessonTime lessonTime;
+
+    @Enumerated(EnumType.STRING)
+    private VenuePlace venuePlace;
 
     @ManyToOne
     private Topic topic;
 
-    public Lesson(int lessonID, Date lessonDate, Time timeStart, Time timeEnd, Topic topic) {
+    public Lesson(int lessonID, String lessonDate, LessonTime lessonTime, VenuePlace venuePlace, Topic topic) {
         this.lessonID = lessonID;
         this.lessonDate = lessonDate;
-        this.timeStart = timeStart;
-        this.timeEnd = timeEnd;
+        this.lessonTime = lessonTime;
+        this.venuePlace = venuePlace;
         this.topic = topic;
     }
 
@@ -36,28 +41,36 @@ public class Lesson {
         this.lessonID = lessonID;
     }
 
-    public Date getLessonDate() {
+    public String getLessonDate() {
         return lessonDate;
     }
 
-    public void setLessonDate(Date lessonDate) {
+    public void setLessonDate(String lessonDate) {
         this.lessonDate = lessonDate;
     }
 
-    public Time getTimeStart() {
-        return timeStart;
+    public LessonTime getLessonTime() {
+        return lessonTime;
     }
 
-    public void setTimeStart(Time timeStart) {
-        this.timeStart = timeStart;
+    public void setLessonTime(LessonTime lessonTime) {
+        this.lessonTime = lessonTime;
     }
 
-    public Time getTimeEnd() {
-        return timeEnd;
+    public VenuePlace getVenuePlace() {
+        return venuePlace;
     }
 
-    public void setTimeEnd(Time timeEnd) {
-        this.timeEnd = timeEnd;
+    public void setVenuePlace(VenuePlace venuePlace) {
+        this.venuePlace = venuePlace;
+    }
+
+    public Topic getTopic() {
+        return topic;
+    }
+
+    public void setTopic(Topic topic) {
+        this.topic = topic;
     }
 
     @Override
@@ -65,9 +78,9 @@ public class Lesson {
         return "Lesson{" +
                 "lessonID=" + lessonID +
                 ", lessonDate=" + lessonDate +
-                ", timeStart=" + timeStart +
-                ", timeEnd=" + timeEnd +
-                ", topic=" + topic +
+                ", lessonTime=" + lessonTime.time +
+                ", venuePlace=" + venuePlace.venuePlace +
+                ", topic=" + topic.getName() +
                 '}';
     }
 }
