@@ -24,7 +24,7 @@
             <Font name="Didot" size="38.0" />
          </font>
       </Label>
-      <Button layoutX="466.0" layoutY="14.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="179.0" style="-fx-background-color: orange;" text="Register" textFill="#a3199a">
+      <Button layoutX="466.0" layoutY="14.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="179.0" style="-fx-background-color: orange;" text="Register" textFill="#1f84a3">
          <font>
             <Font name="Galvji" size="14.0" />
          </font>
