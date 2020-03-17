@@ -1,0 +1,31 @@
+This is example codes just for representation how to add objects to database and work with them!!!
+
+Trainer hatef = new Trainer("Hatef Palizgar", true, "hatef@gmail.com", "54584357");
+        Trainer bobur = new Trainer("Bobur Mirzo", true, "bobur@icloud.com", "56342343");
+        Course jt9 = new Course("JavaTallinn9", "Tallinn");
+        Course pt2 = new Course("PythonTallinn2", "Tallinn");
+        Student aStudent = new Student("Alex", true, "4553434", "alex#icloud.com", jt9);
+        Student bStudent = new Student("John", true, "4324342343", "john@ya.ru", jt9);
+        Student cStudent = new Student("Helen", false, "34397878", "helen@mail.ru", jt9);
+        Topic aTopic = new Topic("Java Fundamentals", jt9, hatef);
+        Topic bTopic = new Topic("Java Advanced", jt9, bobur);
+        Lesson aLesson = new Lesson(1, "23.03.2020", LessonTime.LONG, VenuePlace.CITYSIDE, aTopic);
+        Lesson bLesson = new Lesson(2, "15.02.2020", LessonTime.LONG, VenuePlace.CITYSIDE, bTopic);
+
+        hatef.getTopicsList().add(aTopic);
+        bobur.getTopicsList().add(bTopic);
+
+        aTopic.getLessonsList().add(aLesson);
+        bTopic.getLessonsList().add(bLesson);
+
+        jt9.getStudentsList().add(aStudent);
+        jt9.getStudentsList().add(cStudent);
+        jt9.getStudentsList().add(bStudent);
+        jt9.getTopicsList().add(bTopic);
+        jt9.getTopicsList().add(aTopic);
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        session.save(hatef); session.save(bobur); session.save(jt9); session.save(aStudent);
+        session.save(bStudent); session.save(cStudent); session.save(aTopic); session.save(bTopic);
+        session.save(aLesson); session.save(bLesson);
