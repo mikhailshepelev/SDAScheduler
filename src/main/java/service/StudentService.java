@@ -10,9 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentService implements StudentDAO {
-    @Override
-    public void createStudent() {
 
+    //All fields should be filled in GUI, create object and transfer to this method.
+    //All exceptions cause by incorrect input should be caught before object creation in GUI
+    @Override
+    public void createStudent(Student student) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        session.save(student);
+        tx.commit();
+        session.close();
     }
 
     @Override
@@ -22,29 +29,37 @@ public class StudentService implements StudentDAO {
 
     @Override
     public List<Student> getFullListOfStudents() {
-        List<Student> listOfStudents = new ArrayList<>();
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            Transaction tx = session.beginTransaction();
-            int id = 1;
-            while (true) {
-                Student student = session.get(Student.class, id);
-                if (student == null) break;
-                listOfStudents.add(student);
-                id++;
-            }
-            tx.commit();
-            session.close();
-            return listOfStudents;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        List<Student> students = session.createQuery("from Student", Student.class).list();
+        tx.commit();
+        session.close();
+        return students;
     }
 
     @Override
-    public List<Student> getListOfStudentsFromCourse() {
-        return null;
+    public List<Student> getListOfStudentsFromCourse(int id) {
+        List<Student> listOfStudentsFromCourse = new ArrayList<>();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        List<Student> students = session.createQuery("from Student", Student.class).list();
+        for (Student s : students) {
+            if (s.getCourse() != null && s.getCourse().getCourseID() == id) listOfStudentsFromCourse.add(s);
+        }
+        tx.commit();
+        session.close();
+        return listOfStudentsFromCourse;
     }
 
     @Override
     public void deleteStudent(int id) {
-
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        Student student = new Student();
+        student.setsID(id);
+        session.delete(student);
+        tx.commit();
+        session.close();
     }
 
     @Override

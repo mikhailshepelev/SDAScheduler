@@ -90,7 +90,6 @@ public class Student {
                 ", isMale=" + isMale +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
-                ", course=" + course.getName() +
                 '}';
     }
 }
