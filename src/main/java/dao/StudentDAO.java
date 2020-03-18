@@ -7,14 +7,14 @@ import java.util.List;
 public interface StudentDAO {
 
     //create elements in database representation
-    void createStudent();
+    void createStudent(Student student);
 
     //update elements in database representation
     void updateStudent(int id);
 
     //read elements from database representation
     List<Student> getFullListOfStudents();
-    List<Student> getListOfStudentsFromCourse();
+    List<Student> getListOfStudentsFromCourse(int id);
 
     //delete elements from database representation
     void deleteStudent(int id);
