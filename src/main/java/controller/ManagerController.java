@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
@@ -9,13 +8,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class ManagerController {
+    static Stage createStudentStage = new Stage();
 
     @FXML
     private ResourceBundle resources;
@@ -59,6 +61,8 @@ public class ManagerController {
     @FXML
     private Button allStudents;
 
+
+
     @FXML
     void changeCourses(ActionEvent event) {
 
@@ -80,10 +84,17 @@ public class ManagerController {
     }
 
     @FXML
-    void createStudent(ActionEvent event) {
+    void createStudent(ActionEvent event) throws IOException {
+        URL url = Paths.get("./src/main/java/fxmlfiles/CreateStudentWindow.fxml").toUri().toURL();
+        Parent createStudent = FXMLLoader.load(url);
+        Scene createScene = new Scene(createStudent);
+        createStudentStage = new Stage();
+        createStudentStage.setScene(createScene);
+        createStudentStage.initModality(Modality.APPLICATION_MODAL);
+        createStudentStage.showAndWait();
+
 
     }
-
     @FXML
     void createTrainer(ActionEvent event) {
 
