@@ -76,6 +76,7 @@ public class Topic {
                 ", name='" + name + '\'' +
                 ", course=" + course.getName() +
                 ", trainer=" + trainer.getName() +
+                ", city=" + course.getCity() +
                 '}';
     }
 }
