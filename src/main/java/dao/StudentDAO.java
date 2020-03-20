@@ -19,6 +19,6 @@ public interface StudentDAO {
     //delete elements from database representation
     void deleteStudent(int id);
 
-    void addToCourse(int id);
-    void removeFromCourse(int id);
+    void addToCourse(int studentID, int courseID);
+    void removeFromCourse(int studentID);
 }
