@@ -1,11 +1,13 @@
 package service;
 
 import dao.StudentDAO;
+import entities.Course;
 import entities.Student;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
 
+import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,6 +55,7 @@ public class StudentService implements StudentDAO {
 
     @Override
     public void deleteStudent(int id) {
+        //TODO: test whether getlist method works after student deletion
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         Student student = new Student();
@@ -63,12 +66,38 @@ public class StudentService implements StudentDAO {
     }
 
     @Override
-    public void addToCourse(int id) {
-
+    public void addToCourse(int studentID, int courseID) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        try {
+            Query query = session.createQuery("from Student where id = :a");
+            query.setParameter("a", studentID);
+            Student student = (Student) query.getSingleResult();
+            Query query1 = session.createQuery("from Course where id = :b");
+            query1.setParameter("b", courseID);
+            Course course = (Course) query1.getSingleResult();
+            //TODO: test is this required to add student to listOfStudents of Course class
+            student.setCourse(course);
+            tx.commit();
+            session.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     @Override
-    public void removeFromCourse(int id) {
-
+    public void removeFromCourse(int studentID) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        try {
+            Query query = session.createQuery("from Student where id = :a");
+            query.setParameter("a", studentID);
+            Student student = (Student) query.getSingleResult();
+            student.setCourse(null);
+            tx.commit();
+            session.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }
