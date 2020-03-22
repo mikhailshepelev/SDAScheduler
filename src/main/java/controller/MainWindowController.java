@@ -4,10 +4,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -38,44 +40,22 @@ public class MainWindowController {
 
     @FXML
     void managerWindow(ActionEvent event) throws IOException {
-        URL url = Paths.get("./src/main/java/fxmlfiles/ManagerWindow.fxml").toUri().toURL();
-        Pane managerWindow = FXMLLoader.load(url);
-        Scene managerScene = new Scene(managerWindow);
 
-        Stage entryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        entryStage.setScene(managerScene);
-        entryStage.show();
+        navigate(event, "./src/main/java/fxmlfiles/ManagerWindow.fxml");
+
     }
 
     @FXML
     void studentWindow(ActionEvent event) throws IOException {
 
-        URL url = Paths.get("./src/main/java/fxmlfiles/StudentWindow.fxml").toUri().toURL();
-        Pane studentWindow = FXMLLoader.load(url);
-        Scene studentScene = new Scene(studentWindow);
+       navigate(event,"./src/main/java/fxmlfiles/StudentWindow.fxml" );
 
-
-        Stage students = (Stage)((Node)event.getSource()).getScene().getWindow();
-
-        students.setScene(studentScene);
-        students.show();
     }
 
     @FXML
     void trainerWindow(ActionEvent event) throws IOException {
 
-
-
-        URL url = Paths.get("./src/main/java/fxmlfiles/TrainerWindow.fxml").toUri().toURL();
-
-        Parent trainerWindow = FXMLLoader.load(url);
-        Scene trainerScene = new Scene(trainerWindow);
-
-
-        Stage trainers = (Stage)((Node)event.getSource()).getScene().getWindow();
-
-        trainers.setScene(trainerScene);
-        trainers.show();
+        navigate(event,"./src/main/java/fxmlfiles/TrainerWindow.fxml" );
 
     }
 
@@ -84,6 +64,18 @@ public class MainWindowController {
         assert entryWindow != null : "fx:id=\"entryWindow\" was not injected: check your FXML file 'Untitled'.";
         assert logo != null : "fx:id=\"logo\" was not injected: check your FXML file 'Untitled'.";
 
+    }
+
+    protected void navigate(Event event, String link) throws IOException {
+        URL url = Paths.get(link).toUri().toURL();
+        Parent parentPage = FXMLLoader.load(url);
+
+        Scene scene = new Scene(parentPage);
+
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+
+        stage.setScene(scene);
+        stage.show();
     }
 }
 

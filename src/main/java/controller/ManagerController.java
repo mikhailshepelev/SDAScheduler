@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
+
+import entities.Student;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,9 +19,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import service.StudentService;
 
 public class ManagerController {
-    static Stage createStudentStage = new Stage();
+
+    MainWindowController mainWindowController = new MainWindowController();
+    String menuLink = "./src/main/java/fxmlfiles/MainWindow.fxml";
+
 
     @FXML
     private ResourceBundle resources;
@@ -88,10 +96,10 @@ public class ManagerController {
         URL url = Paths.get("./src/main/java/fxmlfiles/CreateStudentWindow.fxml").toUri().toURL();
         Parent createStudent = FXMLLoader.load(url);
         Scene createScene = new Scene(createStudent);
-        createStudentStage = new Stage();
-        createStudentStage.setScene(createScene);
-        createStudentStage.initModality(Modality.APPLICATION_MODAL);
-        createStudentStage.showAndWait();
+        NewStudentController.createStudentStage = new Stage();
+        NewStudentController.createStudentStage.setScene(createScene);
+        NewStudentController.createStudentStage.initModality(Modality.APPLICATION_MODAL);
+        NewStudentController.createStudentStage.showAndWait();
 
 
     }
@@ -103,13 +111,7 @@ public class ManagerController {
     @FXML
     void goToMenu(ActionEvent event) throws IOException {
 
-        URL url = Paths.get("./src/main/java/fxmlfiles/MainWindow.fxml").toUri().toURL();
-        Pane mainWindow = FXMLLoader.load(url);
-        Scene entryScene = new Scene(mainWindow);
-
-        Stage entryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        entryStage.setScene(entryScene);
-        entryStage.show();
+       mainWindowController.navigate(event, menuLink);
     }
 
     @FXML
@@ -118,7 +120,15 @@ public class ManagerController {
     }
 
     @FXML
-    void viewStudents(ActionEvent event) {
+    void viewStudents(ActionEvent event) throws IOException {
+
+        URL url = Paths.get("./src/main/java/fxmlfiles/AllStudentsController.fxml").toUri().toURL();
+        Parent viewAllStudents = FXMLLoader.load(url);
+        Scene createScene = new Scene(viewAllStudents);
+        AllStudentsController.allStudents = new Stage();
+        AllStudentsController.allStudents.setScene(createScene);
+        AllStudentsController.allStudents.initModality(Modality.APPLICATION_MODAL);
+        AllStudentsController.allStudents.showAndWait();
 
     }
 
@@ -129,18 +139,7 @@ public class ManagerController {
 
     @FXML
     void initialize() {
-        assert managerWindow != null : "fx:id=\"managerWindow\" was not injected: check your FXML file 'ManagerWindow.fxml'.";
-        assert menuButton != null : "fx:id=\"menuButton\" was not injected: check your FXML file 'ManagerWindow.fxml'.";
-        assert logo != null : "fx:id=\"logo\" was not injected: check your FXML file 'ManagerWindow.fxml'.";
-        assert newCourse != null : "fx:id=\"newCourse\" was not injected: check your FXML file 'ManagerWindow.fxml'.";
-        assert manageCourses != null : "fx:id=\"manageCourses\" was not injected: check your FXML file 'ManagerWindow.fxml'.";
-        assert allCourses != null : "fx:id=\"allCourses\" was not injected: check your FXML file 'ManagerWindow.fxml'.";
-        assert newTrainer != null : "fx:id=\"newTrainer\" was not injected: check your FXML file 'ManagerWindow.fxml'.";
-        assert manageTrainers != null : "fx:id=\"manageTrainers\" was not injected: check your FXML file 'ManagerWindow.fxml'.";
-        assert allTrainers != null : "fx:id=\"allTrainers\" was not injected: check your FXML file 'ManagerWindow.fxml'.";
-        assert newStudent != null : "fx:id=\"newStudent\" was not injected: check your FXML file 'ManagerWindow.fxml'.";
-        assert manageStudents != null : "fx:id=\"manageStudents\" was not injected: check your FXML file 'ManagerWindow.fxml'.";
-        assert allStudents != null : "fx:id=\"allStudents\" was not injected: check your FXML file 'ManagerWindow.fxml'.";
+
 
     }
 }
