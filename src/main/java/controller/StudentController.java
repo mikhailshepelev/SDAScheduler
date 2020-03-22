@@ -16,7 +16,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+
 public class StudentController {
+    MainWindowController mainWindowController = new MainWindowController();
+    String menuLink = "./src/main/java/fxmlfiles/MainWindow.fxml";
 
     @FXML
     private ResourceBundle resources;
@@ -43,18 +46,12 @@ public class StudentController {
 
     @FXML
     void getStudentSchedule(ActionEvent event) {
-        System.out.println(getPhoneNumber(event));
     }
 
     @FXML
     void goToMenu(ActionEvent event) throws IOException {
-        URL url = Paths.get("./src/main/java/fxmlfiles/MainWindow.fxml").toUri().toURL();
-        Pane mainWindow = FXMLLoader.load(url);
-        Scene entryScene = new Scene(mainWindow);
+        mainWindowController.navigate(event, menuLink);
 
-        Stage entryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        entryStage.setScene(entryScene);
-        entryStage.show();
     }
 
     @FXML

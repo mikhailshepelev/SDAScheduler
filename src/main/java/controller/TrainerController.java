@@ -17,6 +17,9 @@ import javafx.stage.Stage;
 
 public class TrainerController {
 
+    MainWindowController mainWindowController = new MainWindowController();
+    String menuLink = "./src/main/java/fxmlfiles/MainWindow.fxml";
+
     @FXML
     private ResourceBundle resources;
 
@@ -47,13 +50,7 @@ public class TrainerController {
 
     @FXML
     void goBack(ActionEvent event) throws IOException {
-        URL url = Paths.get("./src/main/java/fxmlfiles/MainWindow.fxml").toUri().toURL();
-        Pane mainWindow = FXMLLoader.load(url);
-        Scene entryScene = new Scene(mainWindow);
-
-        Stage entryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        entryStage.setScene(entryScene);
-        entryStage.show();
+        mainWindowController.navigate(event, menuLink);
     }
 
     @FXML

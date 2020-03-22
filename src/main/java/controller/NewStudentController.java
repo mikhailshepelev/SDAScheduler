@@ -10,9 +10,12 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import service.StudentService;
 
+
 public class NewStudentController {
+    static Stage createStudentStage = new Stage();
 
     ObservableList<String> studentsGenders = FXCollections.observableArrayList("Male", "Female");
 
@@ -46,7 +49,7 @@ public class NewStudentController {
 
     @FXML
     void closeWindow(ActionEvent event) {
-        ManagerController.createStudentStage.close();
+        createStudentStage.close();
     }
 
     @FXML
@@ -58,7 +61,7 @@ public class NewStudentController {
         student.setMale(getGender());
         StudentService createStudent = new StudentService();
         createStudent.createStudent(student);
-        ManagerController.createStudentStage.close();
+        createStudentStage.close();
 
     }
 

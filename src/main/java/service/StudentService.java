@@ -59,7 +59,7 @@ public class StudentService implements StudentDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         Student student = new Student();
-        student.setsID(id);
+        student.setSID(id);
         session.delete(student);
         tx.commit();
         session.close();

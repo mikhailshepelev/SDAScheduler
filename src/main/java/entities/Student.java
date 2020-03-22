@@ -34,11 +34,11 @@ public class Student {
     public Student() {
     }
 
-    public int getsID() {
+    public int getSID() {
         return sID;
     }
 
-    public void setsID(int sID) {
+    public void setSID(int sID) {
         this.sID = sID;
     }
 
@@ -50,8 +50,8 @@ public class Student {
         this.name = name;
     }
 
-    public boolean isMale() {
-        return isMale;
+    public String getMale() {
+        return isMale ? "Male":"Female";
     }
 
     public void setMale(boolean male) {
