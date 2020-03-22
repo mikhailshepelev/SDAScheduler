@@ -17,6 +17,7 @@ public class AppFx extends Application {
         URL url = Paths.get("./src/main/java/fxmlfiles/MainWindow.fxml").toUri().toURL();
         Pane mainWindow = FXMLLoader.load(url);
         Scene entryScene = new Scene(mainWindow);
+        primaryStage.setTitle("SDA Scheduler");
 
         primaryStage.setScene(entryScene);
         primaryStage.show();

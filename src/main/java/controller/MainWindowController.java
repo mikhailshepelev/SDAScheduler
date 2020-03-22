@@ -73,6 +73,7 @@ public class MainWindowController {
         Scene scene = new Scene(parentPage);
 
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setTitle("SDA Scheduler");
 
         stage.setScene(scene);
         stage.show();

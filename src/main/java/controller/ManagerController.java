@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -97,6 +98,7 @@ public class ManagerController {
         Parent createStudent = FXMLLoader.load(url);
         Scene createScene = new Scene(createStudent);
         NewStudentController.createStudentStage = new Stage();
+        NewStudentController.createStudentStage.setTitle("SDA Scheduler");
         NewStudentController.createStudentStage.setScene(createScene);
         NewStudentController.createStudentStage.initModality(Modality.APPLICATION_MODAL);
         NewStudentController.createStudentStage.showAndWait();
@@ -104,8 +106,16 @@ public class ManagerController {
 
     }
     @FXML
-    void createTrainer(ActionEvent event) {
+    void createTrainer(ActionEvent event) throws IOException {
+        URL url = Paths.get("./src/main/java/fxmlfiles/CreateTrainerWindow.fxml").toUri().toURL();
 
+        Parent createTrainer = FXMLLoader.load(url);
+        Scene createScene = new Scene(createTrainer);
+        NewTrainerController.createTrainerStage = new Stage();
+        NewTrainerController.createTrainerStage.setTitle("SDA Schedule");
+        NewTrainerController.createTrainerStage.setScene(createScene);
+        NewTrainerController.createTrainerStage.initModality(Modality.APPLICATION_MODAL);
+        NewTrainerController.createTrainerStage.showAndWait();
     }
 
     @FXML
@@ -124,17 +134,25 @@ public class ManagerController {
 
         URL url = Paths.get("./src/main/java/fxmlfiles/AllStudentsController.fxml").toUri().toURL();
         Parent viewAllStudents = FXMLLoader.load(url);
-        Scene createScene = new Scene(viewAllStudents);
+        Scene viewAllScene = new Scene(viewAllStudents);
         AllStudentsController.allStudents = new Stage();
-        AllStudentsController.allStudents.setScene(createScene);
+        AllStudentsController.allStudents.setTitle("SDA Scheduler");
+        AllStudentsController.allStudents.setScene(viewAllScene);
         AllStudentsController.allStudents.initModality(Modality.APPLICATION_MODAL);
         AllStudentsController.allStudents.showAndWait();
 
     }
 
     @FXML
-    void viewTrainers(ActionEvent event) {
-
+    void viewTrainers(ActionEvent event) throws IOException {
+        URL url = Paths.get("./src/main/java/fxmlfiles/AllTrainersWindow.fxml").toUri().toURL();
+        Parent viewAllTrainers = FXMLLoader.load(url);
+        Scene viewAllScene = new Scene(viewAllTrainers);
+        AllTrainersController.allTrainers = new Stage();
+        AllTrainersController.allTrainers.setTitle("SDA Scheduler");
+        AllTrainersController.allTrainers.setScene(viewAllScene);
+        AllTrainersController.allTrainers.initModality(Modality.APPLICATION_MODAL);
+        AllTrainersController.allTrainers.showAndWait();
     }
 
     @FXML
