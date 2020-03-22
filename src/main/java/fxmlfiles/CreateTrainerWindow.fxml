@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="newStudent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewStudentController">
+<Pane fx:id="newTrainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewTrainerController">
    <children>
-      <Label layoutX="141.0" layoutY="14.0" prefHeight="39.0" prefWidth="158.0" text="New student">
+      <Label layoutX="141.0" layoutY="14.0" prefHeight="39.0" prefWidth="158.0" text="New Trainer">
          <font>
             <Font size="27.0" />
          </font>
@@ -24,19 +24,21 @@
             <Label prefHeight="21.0" prefWidth="117.0" text="Phone number" />
             <Label prefHeight="21.0" prefWidth="123.0" text="E-mail" />
             <Label prefHeight="21.0" prefWidth="108.0" text="Gender" />
+            <Label prefHeight="21.0" prefWidth="40.0" text="Skills" />
          </children>
       </VBox>
-      <TextField fx:id="studentName" layoutX="170.0" layoutY="154.0" onAction="#getStudentName" prefHeight="31.0" prefWidth="186.0" />
-      <TextField fx:id="studentSurname" layoutX="170.0" layoutY="203.0" />
-      <TextField fx:id="studentNumber" layoutX="170.0" layoutY="261.0" onAction="#getStudentNumber" />
-      <TextField fx:id="studentEmail" layoutX="170.0" layoutY="314.0" onAction="#getStudentEmail" />
+      <TextField fx:id="trainerName" layoutX="170.0" layoutY="154.0" onAction="#getTrainerName" prefHeight="31.0" prefWidth="186.0" />
+      <TextField fx:id="trainerSurname" layoutX="170.0" layoutY="203.0" />
+      <TextField fx:id="trainerNumber" layoutX="170.0" layoutY="261.0" onAction="#getTrainerNumber" />
+      <TextField fx:id="trainerEmail" layoutX="170.0" layoutY="314.0" onAction="#getTrainerEmail" />
       <ImageView fx:id="sdaLogo" fitHeight="64.0" fitWidth="83.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../resources/download.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="close" layoutX="113.0" layoutY="422.0" mnemonicParsing="false" onAction="#closeWindow" text="Close" />
-      <Button fx:id="create" layoutX="285.0" layoutY="422.0" mnemonicParsing="false" onAction="#createButton" text="Create" />
+      <Button fx:id="close" layoutX="111.0" layoutY="499.0" mnemonicParsing="false" onAction="#closeWindow" text="Close" />
+      <Button fx:id="create" layoutX="283.0" layoutY="499.0" mnemonicParsing="false" onAction="#createButton" text="Create" />
       <ChoiceBox fx:id="gender" layoutX="169.0" layoutY="376.0" prefWidth="150.0" />
+      <TextField fx:id="trainerSkills" layoutX="170.0" layoutY="432.0" onAction="#getSkills" />
    </children>
 </Pane>

@@ -13,15 +13,17 @@ public class Trainer {
     private boolean isMale;
     private String email;
     private String phoneNumber;
+    private String skills;
 
     @OneToMany(mappedBy = "trainer")
     private List<Topic> topicsList = new ArrayList<>();
 
-    public Trainer(String name, boolean isMale, String email, String phoneNumber) {
+    public Trainer(String name, boolean isMale, String email, String phoneNumber, String skills) {
         this.name = name;
         this.isMale = isMale;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.skills = skills;
     }
 
     public Trainer() {
@@ -43,8 +45,8 @@ public class Trainer {
         this.name = name;
     }
 
-    public boolean isMale() {
-        return isMale;
+    public String getMale() {
+        return isMale ? "Male" : "Female";
     }
 
     public void setMale(boolean male) {
@@ -65,6 +67,14 @@ public class Trainer {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public void setSkills(String skills){
+        this.skills = skills;
+    }
+
+    public String getSkills(){
+        return skills;
     }
 
     public List<Topic> getTopicsList() {

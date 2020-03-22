@@ -54,11 +54,9 @@ public class NewStudentController {
 
     @FXML
     void createButton(ActionEvent event) {
-        Student student = new Student();
-        student.setName(getStudentName(event) + " " + getStudentSurname(event));
-        student.setPhoneNumber(getStudentNumber(event));
-        student.setEmail(getStudentEmail(event));
-        student.setMale(getGender());
+        Student student = new Student(getStudentName(event),getGender(event),
+                getStudentNumber(event), getStudentEmail(event));
+
         StudentService createStudent = new StudentService();
         createStudent.createStudent(student);
         createStudentStage.close();
@@ -72,7 +70,7 @@ public class NewStudentController {
 
     @FXML
     String getStudentName(ActionEvent event) {
-        return studentName.getText();
+        return studentName.getText() + " " + studentSurname.getText();
     }
 
     @FXML
@@ -80,14 +78,10 @@ public class NewStudentController {
         return studentNumber.getText();
     }
 
+
     @FXML
-    String getStudentSurname(ActionEvent event) {
-        return studentSurname.getText();
-    }
-    @FXML
-    boolean getGender(){
-        if(gender.getValue().equals("Male"))return true;
-        else return false;
+    boolean getGender(ActionEvent event){
+        return gender.getValue().equals("Male") ? true : false;
     }
     @FXML
     void initialize() {

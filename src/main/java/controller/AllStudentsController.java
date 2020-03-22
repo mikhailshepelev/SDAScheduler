@@ -54,7 +54,7 @@ public class AllStudentsController implements Initializable{
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
-        getAllStudents();
+
         IDcolumn.setCellValueFactory(new PropertyValueFactory<>("SID"));
         fullnameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         genderCollumn.setCellValueFactory(new PropertyValueFactory<>("Male"));
