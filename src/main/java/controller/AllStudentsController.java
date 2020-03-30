@@ -43,12 +43,22 @@ public class AllStudentsController implements Initializable{
     private TableColumn<Student, Integer> courseColumn;
 
     @FXML
+    private Button deleteStudent;
+
+    @FXML
     private Button closeButton;
 
     @FXML
     void closeTable(ActionEvent event) {
         allStudents.close();
 
+    }
+
+    @FXML
+    void deleteStudent(ActionEvent event){
+        int studentID = tableView.getSelectionModel().getSelectedItem().getSID();
+        studentService.deleteStudent(studentID);
+        tableView.setItems(getAllStudents());
     }
 
 

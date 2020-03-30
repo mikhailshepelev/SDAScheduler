@@ -46,7 +46,18 @@ public class AllTrainersController implements Initializable {
     private TableColumn<Trainer, String> skillsColumn;
 
     @FXML
+    private Button deleteTrainer;
+
+    @FXML
     private Button closeButton;
+
+    @FXML
+    void deleteTrainer(ActionEvent event){
+
+        int trainerID = tableView.getSelectionModel().getSelectedItem().getTrainerID();
+        trainerService.deleteTrainer(trainerID);
+        tableView.setItems(getAllTrainers());
+    }
 
     @FXML
     void closeTable(ActionEvent event) {
