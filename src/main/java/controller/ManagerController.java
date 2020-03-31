@@ -43,80 +43,19 @@ public class ManagerController {
     @FXML
     private ImageView logo;
 
-    @FXML
-    private Button newCourse;
 
     @FXML
     private Button manageCourses;
 
-    @FXML
-    private Button allCourses;
-
-    @FXML
-    private Button newTrainer;
 
     @FXML
     private Button manageTrainers;
 
-    @FXML
-    private Button allTrainers;
-
-    @FXML
-    private Button newStudent;
 
     @FXML
     private Button manageStudents;
 
-    @FXML
-    private Button allStudents;
 
-
-
-    @FXML
-    void changeCourses(ActionEvent event) {
-
-    }
-
-    @FXML
-    void changeStudents(ActionEvent event) {
-
-    }
-
-    @FXML
-    void changeTrainers(ActionEvent event) {
-
-    }
-
-    @FXML
-    void createCourse(ActionEvent event) {
-
-    }
-
-    @FXML
-    void createStudent(ActionEvent event) throws IOException {
-        URL url = Paths.get("./src/main/java/fxmlfiles/CreateStudentWindow.fxml").toUri().toURL();
-        Parent createStudent = FXMLLoader.load(url);
-        Scene createScene = new Scene(createStudent);
-        NewStudentController.createStudentStage = new Stage();
-        NewStudentController.createStudentStage.setTitle("SDA Scheduler");
-        NewStudentController.createStudentStage.setScene(createScene);
-        NewStudentController.createStudentStage.initModality(Modality.APPLICATION_MODAL);
-        NewStudentController.createStudentStage.showAndWait();
-
-
-    }
-    @FXML
-    void createTrainer(ActionEvent event) throws IOException {
-        URL url = Paths.get("./src/main/java/fxmlfiles/CreateTrainerWindow.fxml").toUri().toURL();
-
-        Parent createTrainer = FXMLLoader.load(url);
-        Scene createScene = new Scene(createTrainer);
-        NewTrainerController.createTrainerStage = new Stage();
-        NewTrainerController.createTrainerStage.setTitle("SDA Schedule");
-        NewTrainerController.createTrainerStage.setScene(createScene);
-        NewTrainerController.createTrainerStage.initModality(Modality.APPLICATION_MODAL);
-        NewTrainerController.createTrainerStage.showAndWait();
-    }
 
     @FXML
     void goToMenu(ActionEvent event) throws IOException {
@@ -125,12 +64,12 @@ public class ManagerController {
     }
 
     @FXML
-    void viewAllCourses(ActionEvent event) {
+    void manageCourses(ActionEvent event) {
 
     }
 
     @FXML
-    void viewStudents(ActionEvent event) throws IOException {
+    void manageStudents(ActionEvent event) throws IOException {
 
         URL url = Paths.get("./src/main/java/fxmlfiles/AllStudentsController.fxml").toUri().toURL();
         Parent viewAllStudents = FXMLLoader.load(url);
@@ -144,7 +83,7 @@ public class ManagerController {
     }
 
     @FXML
-    void viewTrainers(ActionEvent event) throws IOException {
+    void manageTrainers(ActionEvent event) throws IOException {
         URL url = Paths.get("./src/main/java/fxmlfiles/AllTrainersWindow.fxml").toUri().toURL();
         Parent viewAllTrainers = FXMLLoader.load(url);
         Scene viewAllScene = new Scene(viewAllTrainers);
