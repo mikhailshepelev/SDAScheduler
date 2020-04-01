@@ -4,9 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <Pane fx:id="managerWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManagerController">
@@ -22,45 +20,23 @@
             <Image url="@../../resources/download1.jpg" />
          </image>
       </ImageView>
-      <HBox layoutY="260.0" prefHeight="39.0" prefWidth="1024.0" spacing="350.0">
-         <children>
-            <Label prefHeight="21.0" prefWidth="223.0" text="Courses">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <Label prefHeight="32.0" prefWidth="223.0" text="Trainers">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <Label prefHeight="21.0" prefWidth="223.0" text="Students">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
-      <VBox layoutY="299.0" prefHeight="203.0" prefWidth="124.0" spacing="55.0">
-         <children>
-            <Button fx:id="newCourse" mnemonicParsing="false" onAction="#createCourse" prefHeight="31.0" prefWidth="125.0" text="New..." />
-            <Button fx:id="manageCourses" mnemonicParsing="false" onAction="#changeCourses" prefHeight="31.0" prefWidth="126.0" text="Update/Delete" />
-            <Button fx:id="allCourses" mnemonicParsing="false" onAction="#viewAllCourses" prefHeight="31.0" prefWidth="125.0" text="View all" />
-         </children>
-      </VBox>
-      <VBox layoutX="435.0" layoutY="299.0" prefHeight="203.0" prefWidth="124.0" spacing="55.0">
-         <children>
-            <Button fx:id="newTrainer" mnemonicParsing="false" onAction="#createTrainer" prefHeight="31.0" prefWidth="125.0" text="New..." />
-            <Button fx:id="manageTrainers" mnemonicParsing="false" onAction="#changeTrainers" prefHeight="31.0" prefWidth="126.0" text="Update/Delete" />
-            <Button fx:id="allTrainers" mnemonicParsing="false" onAction="#viewTrainers" prefHeight="31.0" prefWidth="125.0" text="View all" />
-         </children>
-      </VBox>
-      <VBox layoutX="886.0" layoutY="299.0" prefHeight="203.0" prefWidth="124.0" spacing="55.0">
-         <children>
-            <Button fx:id="newStudent" mnemonicParsing="false" onAction="#createStudent" prefHeight="31.0" prefWidth="125.0" text="New..." />
-            <Button fx:id="manageStudents" mnemonicParsing="false" onAction="#changeStudents" prefHeight="31.0" prefWidth="126.0" text="Update/Delete" />
-            <Button fx:id="allStudents" mnemonicParsing="false" onAction="#viewStudents" prefHeight="31.0" prefWidth="125.0" text="View all" />
-         </children>
-      </VBox>
+      <Button fx:id="allTrainers" layoutX="431.0" layoutY="329.0" mnemonicParsing="false" onAction="#manageTrainers" prefHeight="31.0" prefWidth="132.0" text="Manage Trainers" />
+      <Button fx:id="allStudents" layoutX="872.0" layoutY="329.0" mnemonicParsing="false" onAction="#manageStudents" prefHeight="31.0" prefWidth="138.0" text="Manage Students" />
+      <Button fx:id="allCourses" layoutX="14.0" layoutY="329.0" mnemonicParsing="false" onAction="#manageCourses" prefHeight="31.0" prefWidth="132.0" text="Manage Courses" />
+      <Label layoutX="35.0" layoutY="287.0" prefHeight="32.0" prefWidth="84.0" text="Courses">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="455.0" layoutY="287.0" prefHeight="32.0" prefWidth="84.0" text="Trainers">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="893.0" layoutY="287.0" prefHeight="32.0" prefWidth="96.0" text="Students">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
