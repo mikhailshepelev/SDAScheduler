@@ -8,7 +8,6 @@ import org.hibernate.Transaction;
 import util.HibernateUtil;
 
 import javax.persistence.Query;
-import java.util.ArrayList;
 import java.util.List;
 
 public class StudentService implements StudentDAO {
@@ -26,7 +25,7 @@ public class StudentService implements StudentDAO {
 
     @Override
     public void updateStudent(int id) {
-
+        //TODO: consider method which fill student empty fields if it was not filled during creation
     }
 
     @Override
@@ -40,22 +39,20 @@ public class StudentService implements StudentDAO {
     }
 
     @Override
-    public List<Student> getListOfStudentsFromCourse(int id) {
-        List<Student> listOfStudentsFromCourse = new ArrayList<>();
+    public List<Student> getListOfStudentsFromCourse(int courseID) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
-        List<Student> students = session.createQuery("from Student", Student.class).list();
-        for (Student s : students) {
-            if (s.getCourse() != null && s.getCourse().getCourseID() == id) listOfStudentsFromCourse.add(s);
-        }
+        Query query1 = session.createQuery("from Course where id = :b");
+        query1.setParameter("b", courseID);
+        Course course = (Course) query1.getSingleResult();
         tx.commit();
         session.close();
-        return listOfStudentsFromCourse;
+        return course.getStudentsList();
     }
 
     @Override
     public void deleteStudent(int id) {
-        //TODO: test whether getlist method works after student deletion
+        //getlist method in course class works after student deletion - tested
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         Student student = new Student();
@@ -76,8 +73,8 @@ public class StudentService implements StudentDAO {
             Query query1 = session.createQuery("from Course where id = :b");
             query1.setParameter("b", courseID);
             Course course = (Course) query1.getSingleResult();
-            //TODO: test is this required to add student to listOfStudents of Course class
             student.setCourse(course);
+            //student is automatically adding to listOfStudents in Course class - tested
             tx.commit();
             session.close();
         } catch (Exception e) {
@@ -94,6 +91,7 @@ public class StudentService implements StudentDAO {
             query.setParameter("a", studentID);
             Student student = (Student) query.getSingleResult();
             student.setCourse(null);
+            //student is automatically deleting from listOfStudents in Course class - tested
             tx.commit();
             session.close();
         } catch (Exception e) {
