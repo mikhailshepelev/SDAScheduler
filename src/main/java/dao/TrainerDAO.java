@@ -1,5 +1,6 @@
 package dao;
 
+import entities.Topic;
 import entities.Trainer;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public interface TrainerDAO {
 
     List<Trainer> getFullListOfTrainers();
 
-    List<Trainer> getListOfTrainersAndTopics();
+    List<Topic> getListOfTopics(int trainerID);
 
     void deleteTrainer(int trainerID);
 

@@ -1,6 +1,7 @@
 package service;
 
 import dao.TrainerDAO;
+import entities.Course;
 import entities.Topic;
 import entities.Trainer;
 import org.hibernate.Session;
@@ -31,9 +32,18 @@ public class TrainerService implements TrainerDAO {
     }
 
     @Override
-    public List<Trainer> getListOfTrainersAndTopics() {
-        return null;
+    public List<Topic> getListOfTopics(int trainerID) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        Query query1 = session.createQuery("from Trainer where id = :b");
+        query1.setParameter("b", trainerID);
+        Trainer trainer = (Trainer) query1.getSingleResult();
+        tx.commit();
+        session.close();
+        return trainer.getTopicsList();
     }
+
+    //TODO: consider possibility to make list of Lessons for trainerID
 
     @Override
     public void deleteTrainer(int trainerID) {
@@ -72,7 +82,6 @@ public class TrainerService implements TrainerDAO {
             Query query1 = session.createQuery("from Topic where id = :b");
             query1.setParameter("b", topicID);
             Topic topic = (Topic) query1.getSingleResult();
-            trainer.getTopicsList().add(topic);
             topic.setTrainer(trainer);
             tx.commit();
             session.close();

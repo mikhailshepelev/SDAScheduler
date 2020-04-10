@@ -15,7 +15,7 @@ public class Trainer {
     private String phoneNumber;
     private String skills;
 
-    @OneToMany(mappedBy = "trainer")
+    @OneToMany(mappedBy = "trainer", fetch = FetchType.EAGER)
     private List<Topic> topicsList = new ArrayList<>();
 
     public Trainer(String name, boolean isMale, String email, String phoneNumber, String skills) {
