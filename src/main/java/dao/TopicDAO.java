@@ -5,11 +5,17 @@ import entities.Topic;
 import java.util.List;
 
 public interface TopicDAO {
-    public void createTopic(Topic topic);
-    public void updateTopic(Topic topic);
-    public List<Topic> getTopics();
-    public Topic getTopicInfo(int id);
-    public List<Topic> getTopicWithoutTrainer();
-    public void deleteTopic(Topic topic);
 
+    //create elements in database representation
+    void createTopic(Topic topic);
+
+    //update elements in database representation
+    void updateTopic(Topic topic);
+
+    //read elements from database representation
+    List<Topic> getTopics();
+    Topic getTopicInfo(Topic topic);
+
+    // delete course
+    void deleteTopic(Topic topic);
 }
