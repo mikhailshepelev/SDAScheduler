@@ -36,7 +36,7 @@ public class CourseService implements CourseDAO {
     }
 
     @Override
-    public Course updateCourse(Course course) {
+    public void updateCourse(Course course) {
         Transaction transaction = null;
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
@@ -44,13 +44,11 @@ public class CourseService implements CourseDAO {
             session.update(course);
             transaction.commit();
             session.close();
-            return course;
         } catch (Exception ex) {
             if (transaction != null) {
                 transaction.rollback();
             }
             ex.printStackTrace();
-            return  null;
         }
     }
 
