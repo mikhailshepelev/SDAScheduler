@@ -10,11 +10,12 @@ public interface CourseDAO {
     void createCourse(Course course);
 
     //update elements in database representation
-    void updateCourse(Course course);
+    Course updateCourse(Course course);
 
     //read elements from database representation
     List<Course> getListOfCourses();
-    Course getCourseInfo(int id);
+
+    Course getCourseInfo(Course course);
 
     // delete course
     void deleteCourse(Course course);
