@@ -22,8 +22,8 @@ public class Lesson {
     @ManyToOne
     private Topic topic;
 
-    public Lesson(int lessonID, String lessonDate, LessonTime lessonTime, VenuePlace venuePlace, Topic topic) {
-        this.lessonID = lessonID;
+    //removed int lessonID from constructor:Triin
+    public Lesson(String lessonDate, LessonTime lessonTime, VenuePlace venuePlace, Topic topic) {
         this.lessonDate = lessonDate;
         this.lessonTime = lessonTime;
         this.venuePlace = venuePlace;
