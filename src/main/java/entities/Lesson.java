@@ -80,7 +80,7 @@ public class Lesson {
                 ", lessonDate=" + lessonDate +
                 ", lessonTime=" + lessonTime.time +
                 ", venuePlace=" + venuePlace.venuePlace +
-                ", topic=" + topic.getName() +
+                ", topic=" + topic.getTopicName() +
                 '}';
     }
 }

@@ -3,8 +3,10 @@ package controller;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.sql.Connection;
 import java.util.ResourceBundle;
 
+import entities.Course;
 import entities.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -64,7 +66,17 @@ public class ManagerController {
     }
 
     @FXML
-    void manageCourses(ActionEvent event) {
+    void manageCourses(ActionEvent event) throws IOException {
+
+        URL url = Paths.get("./src/main/java/fxmlfiles/CourseWindow.fxml").toUri().toURL();
+        Parent courses = FXMLLoader.load(url);
+        Scene viewCourses = new Scene(courses);
+        CourseController.courseWindowController = new Stage();
+        CourseController.courseWindowController.setTitle("SDA Scheduler");
+        CourseController.courseWindowController.setScene(viewCourses);
+        CourseController.courseWindowController.initModality(Modality.APPLICATION_MODAL);
+        CourseController.courseWindowController.showAndWait();
+
 
     }
 
@@ -99,4 +111,6 @@ public class ManagerController {
 
 
     }
+
+
 }

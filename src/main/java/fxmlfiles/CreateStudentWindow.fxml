@@ -26,10 +26,10 @@
             <Label prefHeight="21.0" prefWidth="108.0" text="Gender" />
          </children>
       </VBox>
-      <TextField fx:id="studentName" layoutX="170.0" layoutY="154.0" onAction="#getStudentName" prefHeight="31.0" prefWidth="186.0" />
+      <TextField fx:id="studentName" layoutX="170.0" layoutY="154.0" prefHeight="31.0" prefWidth="186.0" />
       <TextField fx:id="studentSurname" layoutX="170.0" layoutY="203.0" />
-      <TextField fx:id="studentNumber" layoutX="170.0" layoutY="261.0" onAction="#getStudentNumber" />
-      <TextField fx:id="studentEmail" layoutX="170.0" layoutY="314.0" onAction="#getStudentEmail" />
+      <TextField fx:id="studentNumber" layoutX="170.0" layoutY="261.0" />
+      <TextField fx:id="studentEmail" layoutX="170.0" layoutY="314.0" />
       <ImageView fx:id="sdaLogo" fitHeight="64.0" fitWidth="83.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../resources/download.jpg" />
