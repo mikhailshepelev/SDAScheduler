@@ -37,7 +37,7 @@ public class Topic {
         this.topicID = topicID;
     }
 
-    public String getName() {
+    public String getTopicName() {
         return name;
     }
 
@@ -47,6 +47,10 @@ public class Topic {
 
     public Course getCourse() {
         return course;
+    }
+
+    public String getCourseName(){
+        return getCourse().getName();
     }
 
     public void setCourse(Course course) {
