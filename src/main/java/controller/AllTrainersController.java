@@ -96,7 +96,7 @@ public class AllTrainersController implements Initializable {
         genderCollumn.setCellValueFactory(new PropertyValueFactory<>("male"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-        //topicsColumn.setCellValueFactory(new PropertyValueFactory<>("topicsList"));
+        //topicsColumn.setCellValueFactory(new PropertyValueFactory<>("topics"));
         skillsColumn.setCellValueFactory(new PropertyValueFactory<>("skills"));
 
         tableView.setItems(getAllTrainers());
