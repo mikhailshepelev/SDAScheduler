@@ -1,10 +1,7 @@
 package service;
 
 import dto.ScheduleDTO;
-import entities.Course;
-import entities.Lesson;
-import entities.Student;
-import entities.Topic;
+import entities.*;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
@@ -26,7 +23,25 @@ public class ScheduleService {
         List<Topic> listOfTopics = course.getTopicsList();
         List<Lesson> listOfLessons = ejectTopics(listOfTopics);
         for (Lesson l: listOfLessons) {
-            ScheduleDTO schedule = createObject(course, l);
+            ScheduleDTO schedule = createObject(l);
+            scheduleDTOS.add(schedule);
+        }
+        tx.commit();
+        session.close();
+        return scheduleDTOS;
+    }
+
+    public List<ScheduleDTO> getTrainerSchedule(String phoneNumber){
+        List<ScheduleDTO> scheduleDTOS = new ArrayList<>();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        Query query1 = session.createQuery("from Trainer where phoneNumber = :b");
+        query1.setParameter("b", phoneNumber);
+        Trainer trainer = (Trainer) query1.getSingleResult();
+        List<Topic> listOfTopics = trainer.getTopicsList();
+        List<Lesson> listOfLessons = ejectTopics(listOfTopics);
+        for (Lesson l: listOfLessons) {
+            ScheduleDTO schedule = createObject(l);
             scheduleDTOS.add(schedule);
         }
         tx.commit();
@@ -42,12 +57,24 @@ public class ScheduleService {
         return listOfLessons;
     }
 
-    private ScheduleDTO createObject(Course course, Lesson lesson) {
-        String courseName = course.getName();
-        String topicName = lesson.getTopic().getTopicName();
-        String time = lesson.getLessonTime().time;
-        String date = lesson.getLessonDate();
-        String venuePlace = lesson.getVenuePlace().venuePlace;
-        return new ScheduleDTO(courseName, topicName, time, date, venuePlace);
+    private ScheduleDTO createObject(Lesson lesson) {
+        String courseName = "";
+        String topicName = "";
+        String time = "";
+        String date = "";
+        String trainerName = "";
+        String venuePlace = "";
+        try {
+            courseName = lesson.getTopic().getCourseName();
+            topicName = lesson.getTopic().getTopicName();
+            time = lesson.getLessonTime().time;
+            date = lesson.getLessonDate();
+            trainerName = lesson.getTopic().getTrainerName();
+            venuePlace = lesson.getVenuePlace().venuePlace;
+        }
+        catch (NullPointerException e) {
+            System.out.println(e);
+        }
+        return new ScheduleDTO(courseName, topicName, time, date, venuePlace, trainerName);
     }
 }

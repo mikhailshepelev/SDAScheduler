@@ -21,12 +21,13 @@ public class ScheduleDTO {
     private String venuePlace;
     private String trainerName;
 
-    public ScheduleDTO(String courseName, String topicName, String time, String date, String venuePlace) {
+    public ScheduleDTO(String courseName, String topicName, String time, String date, String venuePlace, String trainerName) {
         this.courseName = courseName;
         this.topicName = topicName;
         this.time = time;
         this.date = date;
         this.venuePlace = venuePlace;
+        this.trainerName = trainerName;
     }
 
     public ScheduleDTO() {
@@ -88,6 +89,7 @@ public class ScheduleDTO {
                 ", time='" + time + '\'' +
                 ", date='" + date + '\'' +
                 ", venuePlace='" + venuePlace + '\'' +
+                ", trainerName='" + trainerName + '\'' +
                 '}';
     }
 }
