@@ -40,7 +40,7 @@ public class CourseController implements Initializable {
     private TableColumn<Topic, String> courseName;
 
     @FXML
-    private TableColumn<Trainer, String> trainerName;
+    private TableColumn<Topic, String> trainerName;
 
     @FXML
     void closeWindow(ActionEvent event) throws IOException {
@@ -53,7 +53,7 @@ public class CourseController implements Initializable {
         topicId.setCellValueFactory(new PropertyValueFactory<>("topicID"));
         topicName.setCellValueFactory(new PropertyValueFactory<>("topicName"));
         courseName.setCellValueFactory(new PropertyValueFactory<>("courseName"));
-        trainerName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        trainerName.setCellValueFactory(new PropertyValueFactory<>("trainerName"));
 
         topicTable.setItems(getTopicTable());
     }

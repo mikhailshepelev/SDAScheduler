@@ -61,6 +61,10 @@ public class Topic {
         return trainer;
     }
 
+    public String getTrainerName(){
+        return getTrainer().getName();
+    }
+
     public void setTrainer(Trainer trainer) {
         this.trainer = trainer;
     }

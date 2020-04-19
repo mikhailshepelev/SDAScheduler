@@ -25,7 +25,7 @@
       <Button layoutX="14.0" layoutY="675.0" mnemonicParsing="false" onAction="#goToMenu" prefHeight="31.0" prefWidth="164.0" text="Menu" />
       <ImageView fx:id="logo" fitHeight="150.0" fitWidth="200.0" layoutX="34.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../resources/download1.jpg" />
+            <Image url="@../../resources/download.jpg" />
          </image>
       </ImageView>
       <TextField fx:id="phoneNumber" focusTraversable="false" layoutX="201.0" layoutY="329.0" onAction="#getPhoneNumber" promptText="phoneNumber" />
