@@ -67,7 +67,7 @@ public class AllTrainersController implements Initializable {
         Parent createTrainer = FXMLLoader.load(url);
         Scene createScene = new Scene(createTrainer);
         NewTrainerController.createTrainerStage = new Stage();
-        NewTrainerController.createTrainerStage.setTitle("SDA Schedule");
+        NewTrainerController.createTrainerStage.setTitle("SDA ScheduleDTO");
         NewTrainerController.createTrainerStage.setScene(createScene);
         NewTrainerController.createTrainerStage.initModality(Modality.APPLICATION_MODAL);
         NewTrainerController.createTrainerStage.showAndWait();
@@ -96,7 +96,7 @@ public class AllTrainersController implements Initializable {
         genderCollumn.setCellValueFactory(new PropertyValueFactory<>("male"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-        //topicsColumn.setCellValueFactory(new PropertyValueFactory<>("topics"));
+        topicsColumn.setCellValueFactory(new PropertyValueFactory<>("topics"));
         skillsColumn.setCellValueFactory(new PropertyValueFactory<>("skills"));
 
         tableView.setItems(getAllTrainers());
