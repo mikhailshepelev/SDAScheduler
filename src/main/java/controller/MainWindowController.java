@@ -48,7 +48,7 @@ public class MainWindowController {
     @FXML
     void studentWindow(ActionEvent event) throws IOException {
 
-       navigate(event,"./src/main/java/fxmlfiles/StudentWindow.fxml" );
+       navigate(event,"./src/main/java/fxmlfiles/StudentSchedule.fxml" );
 
     }
 
