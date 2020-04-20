@@ -77,6 +77,8 @@ public class StudentsScheduleController {
             System.out.println();
         } catch (NoResultException e){
             wrongNumber();
+        }catch (NullPointerException e){
+            wrongNumber();
         }
     }
 
@@ -94,7 +96,7 @@ public class StudentsScheduleController {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
 
-        alert.setContentText("Wrong number");
+        alert.setContentText("Wrong number or you aren't set to the course yet");
         alert.showAndWait();
 
     }
