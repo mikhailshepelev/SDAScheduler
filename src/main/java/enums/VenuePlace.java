@@ -12,7 +12,8 @@ public enum VenuePlace {
     DORPAT_HOTEL("Dorpat Hotel"),
     TALLINK_HOTEL("Tallink Hotel"),
     JUSTUS_HOTEL("Justus Hotel"),
-    KREUTZWALD_HOTEL("Kreutzwald Hotel");
+    KREUTZWALD_HOTEL("Kreutzwald Hotel"),
+    EMPTY("");
 
     public String venuePlace;
 
