@@ -3,6 +3,7 @@ package entities;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Trainer {
@@ -94,5 +95,22 @@ public class Trainer {
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Trainer trainer = (Trainer) o;
+        return trainerID == trainer.trainerID &&
+                isMale == trainer.isMale &&
+                Objects.equals(name, trainer.name) &&
+                Objects.equals(email, trainer.email) &&
+                Objects.equals(phoneNumber, trainer.phoneNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(trainerID, name, isMale, email, phoneNumber);
     }
 }
