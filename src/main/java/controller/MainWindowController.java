@@ -55,7 +55,7 @@ public class MainWindowController {
     @FXML
     void trainerWindow(ActionEvent event) throws IOException {
 
-        navigate(event,"./src/main/java/fxmlfiles/TrainerWindow.fxml" );
+        navigate(event,"./src/main/java/fxmlfiles/TrainerSchedule.fxml" );
 
     }
 

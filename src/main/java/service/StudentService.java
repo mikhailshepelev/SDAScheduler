@@ -3,11 +3,13 @@ package service;
 import dao.StudentDAO;
 import entities.Course;
 import entities.Student;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
 
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.List;
 
 public class StudentService implements StudentDAO {

@@ -75,8 +75,10 @@ public class AllTrainersController implements Initializable {
         tableView.setItems(getAllTrainers());
     }
 
+
     @FXML
     void deleteTrainer(ActionEvent event){
+
 
         int trainerID = tableView.getSelectionModel().getSelectedItem().getTrainerID();
         trainerService.deleteTrainer(trainerID);
