@@ -3,6 +3,7 @@ package entities;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Course {
@@ -69,5 +70,20 @@ public class Course {
     @Override
     public String toString() {
         return "ID: " + courseID + ", name: " + name + ", city: " + city;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Course course = (Course) o;
+        return courseID == course.courseID &&
+                Objects.equals(name, course.name) &&
+                Objects.equals(city, course.city);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(courseID, name, city);
     }
 }

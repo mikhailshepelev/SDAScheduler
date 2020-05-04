@@ -1,6 +1,7 @@
 package entities;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Student {
@@ -91,5 +92,23 @@ public class Student {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return sID == student.sID &&
+                isMale == student.isMale &&
+                Objects.equals(name, student.name) &&
+                Objects.equals(phoneNumber, student.phoneNumber) &&
+                Objects.equals(email, student.email) &&
+                Objects.equals(course, student.course);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sID, name, isMale, phoneNumber, email, course);
     }
 }
