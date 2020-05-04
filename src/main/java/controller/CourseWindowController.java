@@ -102,9 +102,6 @@ public class CourseWindowController implements Initializable {
     @FXML
     void setStudent(ActionEvent event) {
 
-
-
-
     }
 
     void getCoursesTable(){

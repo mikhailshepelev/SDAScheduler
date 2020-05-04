@@ -1,5 +1,6 @@
 package controller;
 
+import entities.Course;
 import entities.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import service.CourseService;
 import service.StudentService;
 
 
@@ -25,8 +27,11 @@ import java.util.regex.Pattern;
 public class NewStudentController implements Initializable {
 
     static Stage createStudentStage = new Stage();
+    CourseService courseService= new CourseService();
 
     ObservableList<String> studentsGenders = FXCollections.observableArrayList("Male", "Female");
+
+    ObservableList<Course> courseList = FXCollections.observableArrayList(courseService.getListOfCourses());
 
     @FXML
     private Button close;
@@ -53,6 +58,9 @@ public class NewStudentController implements Initializable {
     private ChoiceBox<String> gender;
 
     @FXML
+    ChoiceBox<Course> course;
+
+    @FXML
     private ImageView sdaLogo;
 
     @FXML
@@ -67,6 +75,7 @@ public class NewStudentController implements Initializable {
                 if(isRightNumber()) {
                     Student student = new Student(getStudentName(), getGender(),
                             getStudentNumber(), getStudentEmail());
+                    student.setCourse(getCourse());
                     StudentService createStudent = new StudentService();
                     createStudent.createStudent(student);
                     createStudentStage.close();
@@ -104,12 +113,17 @@ public class NewStudentController implements Initializable {
         return gender.getValue().equals("Male") ? true : false;
     }
 
+    Course getCourse(){
+        return course.getValue();
+    }
+
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
         gender.setItems(studentsGenders);
         gender.setValue("Male");
 
+        course.setItems(courseList);
     }
 
     private boolean isFilled(){
