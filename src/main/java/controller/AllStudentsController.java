@@ -93,13 +93,15 @@ public class AllStudentsController implements Initializable{
 
     @FXML
     void deleteStudent(ActionEvent event){
-
+        studentID=tableView.getSelectionModel().getSelectedItem().getSID();
         studentService.deleteStudent(studentID);
         setStudentTable();
     }
 
     @FXML
     void addToCourse(ActionEvent event){
+        studentID = tableView.getSelectionModel().getSelectedItem().getSID();
+        courseID = selectedCourse.getSelectionModel().getSelectedItem().getCourseID();
         studentService.addToCourse(studentID, courseID);
         setStudentTable();
     }
@@ -109,13 +111,6 @@ public class AllStudentsController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         setStudentTable();
         selectedCourse.setItems(courseList);
-
-        tableView.getSelectionModel().selectedItemProperty().
-                addListener((((observable, oldValue, newValue) -> studentID = newValue.getSID())));
-
-        selectedCourse.getSelectionModel().selectedItemProperty().
-                addListener((((observable, oldValue, newValue) ->
-                        courseID = newValue.getCourseID())));
     }
 
     private void setStudentTable(){
