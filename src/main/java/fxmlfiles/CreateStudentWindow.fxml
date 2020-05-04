@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <Pane fx:id="newStudent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewStudentController">
    <children>
@@ -17,13 +18,14 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <VBox layoutX="41.0" layoutY="154.0" prefHeight="98.0" prefWidth="108.0" spacing="35.0">
+      <VBox layoutX="41.0" layoutY="154.0" prefHeight="314.0" prefWidth="108.0" spacing="35.0">
          <children>
             <Label prefHeight="21.0" prefWidth="102.0" text="Name" />
             <Label prefHeight="21.0" prefWidth="101.0" text="Surname" />
             <Label prefHeight="21.0" prefWidth="117.0" text="Phone number" />
             <Label prefHeight="21.0" prefWidth="123.0" text="E-mail" />
             <Label prefHeight="21.0" prefWidth="108.0" text="Gender" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Course" />
          </children>
       </VBox>
       <TextField fx:id="studentName" layoutX="170.0" layoutY="154.0" prefHeight="31.0" prefWidth="186.0" />
@@ -35,8 +37,9 @@
             <Image url="@../../resources/download.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="close" layoutX="113.0" layoutY="422.0" mnemonicParsing="false" onAction="#closeWindow" text="Close" />
-      <Button fx:id="create" layoutX="285.0" layoutY="422.0" mnemonicParsing="false" onAction="#createButton" text="Create" />
-      <ChoiceBox fx:id="gender" layoutX="169.0" layoutY="376.0" prefWidth="150.0" />
+      <Button fx:id="close" layoutX="121.0" layoutY="487.0" mnemonicParsing="false" onAction="#closeWindow" text="Close" />
+      <Button fx:id="create" layoutX="293.0" layoutY="487.0" mnemonicParsing="false" onAction="#createButton" text="Create" />
+      <ChoiceBox fx:id="gender" layoutX="169.0" layoutY="376.0" prefHeight="31.0" prefWidth="186.0" />
+      <ChoiceBox fx:id="course" layoutX="169.0" layoutY="430.0" prefHeight="31.0" prefWidth="186.0" />
    </children>
 </Pane>

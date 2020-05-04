@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CourseWindowController">
+   <children>
+      <TableView fx:id="coursesTable" layoutX="67.0" layoutY="189.0" prefHeight="342.0" prefWidth="248.0">
+        <columns>
+          <TableColumn fx:id="courseID" prefWidth="46.0" text="ID" />
+          <TableColumn fx:id="courseName" prefWidth="201.0" text="Name" />
+        </columns>
+      </TableView>
+      <TableView fx:id="topicTable" layoutX="452.0" layoutY="86.0" prefHeight="208.0" prefWidth="426.0">
+         <columns>
+            <TableColumn fx:id="topicID" prefWidth="37.0" text="ID" />
+            <TableColumn fx:id="topicName" minWidth="0.0" prefWidth="184.0" text="Name" />
+            <TableColumn fx:id="trainerName" prefWidth="204.0" text="Trainer's name" />
+         </columns>
+      </TableView>
+      <Button fx:id="backButton" layoutX="14.0" layoutY="675.0" mnemonicParsing="false" onAction="#back" prefHeight="31.0" prefWidth="164.0" text="Back" />
+      <TableView fx:id="studentsTable" layoutX="452.0" layoutY="426.0" prefHeight="208.0" prefWidth="426.0">
+        <columns>
+          <TableColumn fx:id="studentsID" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="studentsName" prefWidth="162.0" text="Name" />
+            <TableColumn fx:id="studentsPhone" prefWidth="187.0" text="Phone Number" />
+        </columns>
+      </TableView>
+      <Text layoutX="540.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Topics" textAlignment="CENTER" wrappingWidth="260.9999794960022">
+         <font>
+            <Font name="Times New Roman" size="23.0" />
+         </font>
+      </Text>
+      <Text layoutX="540.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Students" textAlignment="CENTER" wrappingWidth="260.9999794960022">
+         <font>
+            <Font name="Times New Roman" size="23.0" />
+         </font>
+      </Text>
+      <Text layoutX="61.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Courses" textAlignment="CENTER" wrappingWidth="260.9999794960022">
+         <font>
+            <Font name="Times New Roman" size="23.0" />
+         </font>
+      </Text>
+      <Separator layoutX="67.0" layoutY="173.0" prefHeight="3.0" prefWidth="248.0" />
+      <Separator layoutX="452.0" layoutY="75.0" prefHeight="3.0" prefWidth="426.0" />
+      <Separator layoutX="452.0" layoutY="411.0" prefHeight="3.0" prefWidth="426.0" />
+      <Button fx:id="deleteTopicButton" layoutX="900.0" layoutY="263.0" mnemonicParsing="false" onAction="#deleteTopic" prefHeight="31.0" prefWidth="107.0" text="Delete " />
+      <Button fx:id="deleteStudentButton" layoutX="901.0" layoutY="603.0" mnemonicParsing="false" onAction="#deleteStudent" prefHeight="31.0" prefWidth="107.0" text="Delete" />
+      <Button fx:id="setStudentButton" layoutX="219.0" layoutY="547.0" mnemonicParsing="false" onAction="#setStudent" text="Set student" />
+      <Button fx:id="createTopicButton" layoutX="67.0" layoutY="547.0" mnemonicParsing="false" onAction="#createTopic" prefHeight="31.0" prefWidth="107.0" text="Create topic" />
+   </children>
+</Pane>

@@ -6,22 +6,27 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="1067.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AllTrainersController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="1344.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AllTrainersController">
    <children>
-      <TableView fx:id="tableView" layoutX="1.0" layoutY="14.0" prefHeight="610.0" prefWidth="1067.0">
+      <TableView fx:id="tableView" layoutX="1.0" layoutY="14.0" prefHeight="610.0" prefWidth="918.0">
         <columns>
           <TableColumn fx:id="IDcolumn" prefWidth="38.0" text="ID" />
           <TableColumn fx:id="fullnameColumn" prefWidth="162.0" text="Full Name" />
             <TableColumn fx:id="genderCollumn" prefWidth="106.0" text="Gender" />
             <TableColumn fx:id="emailColumn" prefWidth="154.0" text="E-mail" />
             <TableColumn fx:id="phoneNumberColumn" prefWidth="167.0" text="Phone Number" />
-            <TableColumn fx:id="topicsColumn" prefWidth="149.0" text="Topics" />
             <TableColumn fx:id="skillsColumn" prefWidth="290.0" text="Skills" />
         </columns>
       </TableView>
-      <Separator layoutX="-1.0" layoutY="599.0" prefHeight="23.0" prefWidth="1067.0" />
+      <Separator layoutY="624.0" prefHeight="23.0" prefWidth="1344.0" />
       <Button fx:id="closeButton" layoutX="14.0" layoutY="649.0" mnemonicParsing="false" onAction="#closeTable" prefHeight="31.0" prefWidth="164.0" text="Close" />
-      <Button fx:id="deleteTrainer" layoutX="988.0" layoutY="649.0" mnemonicParsing="false" onAction="#deleteTrainer" text="Delete" />
-      <Button fx:id="newTrainer" layoutX="857.0" layoutY="649.0" mnemonicParsing="false" onAction="#createTrainer" prefHeight="31.0" prefWidth="63.0" text="New..." />
+      <Button fx:id="deleteTrainer" layoutX="856.0" layoutY="649.0" mnemonicParsing="false" onAction="#deleteTrainer" text="Delete" />
+      <Button fx:id="newTrainer" layoutX="725.0" layoutY="649.0" mnemonicParsing="false" onAction="#createTrainer" prefHeight="31.0" prefWidth="63.0" text="New..." />
+      <TableView fx:id="topics" layoutX="957.0" layoutY="14.0" prefHeight="610.0" prefWidth="364.0">
+        <columns>
+          <TableColumn fx:id="topicID" prefWidth="35.0" text="ID" />
+          <TableColumn fx:id="topicName" prefWidth="328.0" text="Topic name" />
+        </columns>
+      </TableView>
    </children>
 </Pane>

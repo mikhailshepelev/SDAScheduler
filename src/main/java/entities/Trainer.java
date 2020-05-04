@@ -81,6 +81,14 @@ public class Trainer {
     public List<Topic> getTopicsList() {
         return topicsList;
     }
+    public String getTopics(){
+        String topics = "";
+        for (Topic t: getTopicsList()) {
+            topics += t.getTopicName() + " ";
+
+        }
+        return topics;
+    }
 
     public void setTopicsList(List<Topic> topicsList) {
         this.topicsList = topicsList;

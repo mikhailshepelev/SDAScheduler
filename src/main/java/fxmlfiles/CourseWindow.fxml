@@ -15,11 +15,10 @@
          </image>
       </ImageView>
       <Button fx:id="closeButton" layoutX="14.0" layoutY="675.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="31.0" prefWidth="164.0" text="Close" />
-      <TableView fx:id="topicTable" layoutX="268.0" layoutY="14.0" prefHeight="247.0" prefWidth="609.0">
+      <TableView fx:id="topicTable" layoutX="268.0" layoutY="14.0" prefHeight="468.0" prefWidth="392.0">
         <columns>
           <TableColumn fx:id="topicId" prefWidth="37.0" text="ID" />
-          <TableColumn fx:id="topicName" prefWidth="159.0" text="Name" />
-            <TableColumn fx:id="courseName" prefWidth="187.0" text="Course's name" />
+          <TableColumn fx:id="topicName" minWidth="0.0" prefWidth="137.0" text="Name" />
             <TableColumn fx:id="trainerName" prefWidth="225.0" text="Trainer's name" />
         </columns>
       </TableView>

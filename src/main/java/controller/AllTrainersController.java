@@ -1,5 +1,6 @@
 package controller;
 
+import entities.Topic;
 import entities.Trainer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,6 +27,7 @@ public class AllTrainersController implements Initializable {
 
     static Stage allTrainers = new Stage();
     TrainerService trainerService = new TrainerService();
+    int trainerID;
 
     @FXML
     private TableView<Trainer> tableView;
@@ -46,10 +48,17 @@ public class AllTrainersController implements Initializable {
     private TableColumn<Trainer, String> phoneNumberColumn;
 
     @FXML
-    private TableColumn<Trainer, String> topicsColumn;
+    private TableColumn<Trainer, String> skillsColumn;
 
     @FXML
-    private TableColumn<Trainer, String> skillsColumn;
+    private TableView<Topic> topics;
+
+    @FXML
+    private TableColumn<Topic, Integer> topicID;
+
+    @FXML
+    private TableColumn<Topic, String> topicName;
+
 
     @FXML
     private Button newTrainer;
@@ -75,9 +84,9 @@ public class AllTrainersController implements Initializable {
         tableView.setItems(getAllTrainers());
     }
 
+
     @FXML
     void deleteTrainer(ActionEvent event){
-
         int trainerID = tableView.getSelectionModel().getSelectedItem().getTrainerID();
         trainerService.deleteTrainer(trainerID);
         tableView.setItems(getAllTrainers());
@@ -90,17 +99,25 @@ public class AllTrainersController implements Initializable {
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
+        setTrainersTable();
 
+        tableView.getSelectionModel().selectedItemProperty().
+                addListener(((observable, oldValue, newValue)->{
+                    trainerID = newValue.getTrainerID();
+                    setTopicsTable();
+                }));
+
+    }
+
+    private void setTrainersTable(){
         IDcolumn.setCellValueFactory(new PropertyValueFactory<>("trainerID"));
         fullnameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         genderCollumn.setCellValueFactory(new PropertyValueFactory<>("male"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-        topicsColumn.setCellValueFactory(new PropertyValueFactory<>("topics"));
         skillsColumn.setCellValueFactory(new PropertyValueFactory<>("skills"));
 
         tableView.setItems(getAllTrainers());
-
     }
 
     private ObservableList<Trainer> getAllTrainers(){
@@ -108,4 +125,19 @@ public class AllTrainersController implements Initializable {
 
         return allTrainers;
     }
+
+    private void setTopicsTable(){
+        topicID.setCellValueFactory(new PropertyValueFactory<>("topicID"));
+        topicName.setCellValueFactory(new PropertyValueFactory<>("topicName"));
+
+        topics.setItems(getTopics());
+    }
+
+    private ObservableList<Topic> getTopics(){
+
+        ObservableList<Topic> topicList = FXCollections.observableArrayList(trainerService.getListOfTopics(trainerID));
+
+        return topicList;
+    }
+
 }

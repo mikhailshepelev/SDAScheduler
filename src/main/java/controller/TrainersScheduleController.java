@@ -5,24 +5,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import service.ScheduleService;
 
 import javax.persistence.NoResultException;
 import java.io.IOException;
 
-
-
-public class StudentsScheduleController {
+public class TrainersScheduleController {
 
     MainWindowController mainWindowController = new MainWindowController();
     String menuLink = "./src/main/java/fxmlfiles/MainWindow.fxml";
 
     @FXML
-    private TableView<ScheduleDTO> studentsSchedule;
+    private TableView<ScheduleDTO> trainerSchedule;
 
     @FXML
     private TableColumn<ScheduleDTO, String> courseName;
@@ -40,7 +36,7 @@ public class StudentsScheduleController {
     private TableColumn<ScheduleDTO, String> venuePlace;
 
     @FXML
-    private TableColumn<ScheduleDTO, String> trainerName;
+    private Button menu;
 
     @FXML
     private TextField phoneNumber;
@@ -49,29 +45,25 @@ public class StudentsScheduleController {
     private Button showButton;
 
     @FXML
-    private Button menu;
+    void goToMenu(ActionEvent event) throws IOException {
+        mainWindowController.navigate(event, menuLink);
+    }
 
     @FXML
     void showSchedule(ActionEvent event) {
         getTable();
     }
 
-    @FXML
-    void goToMenu(ActionEvent event) throws IOException {
-        mainWindowController.navigate(event, menuLink);
-    }
-
-
     public void getTable() {
         try {
-            courseName.setCellValueFactory(new PropertyValueFactory<>("CourseName"));
+            courseName.setCellValueFactory(new PropertyValueFactory<>("courseName"));
             topicName.setCellValueFactory(new PropertyValueFactory<>("topicName"));
             date.setCellValueFactory(new PropertyValueFactory<>("date"));
             time.setCellValueFactory(new PropertyValueFactory<>("time"));
             venuePlace.setCellValueFactory(new PropertyValueFactory<>("venuePlace"));
-            trainerName.setCellValueFactory(new PropertyValueFactory<>("trainerName"));
 
-            studentsSchedule.setItems(getSchedule());
+
+            trainerSchedule.setItems(getSchedule());
 
             System.out.println();
         } catch (NoResultException e){
@@ -86,7 +78,7 @@ public class StudentsScheduleController {
         ScheduleService schedule = new ScheduleService();
 
         ObservableList<ScheduleDTO> scheduleList = FXCollections.
-                observableArrayList(schedule.getStudentSchedule(phoneNumber.getText()));
+                observableArrayList(schedule.getTrainerSchedule(phoneNumber.getText()));
 
         return scheduleList;
     }
@@ -99,4 +91,5 @@ public class StudentsScheduleController {
         alert.showAndWait();
 
     }
+
 }
