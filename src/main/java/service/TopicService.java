@@ -1,6 +1,7 @@
 package service;
 
 import dao.TopicDAO;
+import entities.Course;
 import entities.Lesson;
 import entities.Topic;
 import org.hibernate.Session;
@@ -85,7 +86,7 @@ public class TopicService implements TopicDAO {
     public List<Topic> getTopicWithoutTrainer(){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
-        List<Topic> topicNoTrainer = session.createQuery("from Topic T WHERE trainer_trainerID IS null", Topic.class).list();
+        List<Topic> topicNoTrainer = session.createQuery("from Topic T WHERE trainer.id IS null", Topic.class).list();
         tx.commit();
         session.close();
         return topicNoTrainer;
@@ -114,7 +115,7 @@ public class TopicService implements TopicDAO {
     public void removeTopicTimeTableConstraint(Topic topic) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
-        Query query = session.createQuery("from Lesson where topic_topicID = :b");
+        Query query = session.createQuery("from Lesson where topic.id = :b");
         query.setParameter("b", topic.getTopicID());
         List<Lesson> timeTables = query.getResultList();
         for (Lesson lesson : timeTables) {
@@ -122,6 +123,17 @@ public class TopicService implements TopicDAO {
         }
         tx.commit();
         session.close();
+    }
+
+    public List<Topic> getListOfTopicsForCourse(int courseID) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("from Course where id = :b");
+        query.setParameter("b", courseID);
+        Course course = (Course) query.getSingleResult();
+        tx.commit();
+        session.close();
+        return course.getTopicsList();
     }
 }
 
